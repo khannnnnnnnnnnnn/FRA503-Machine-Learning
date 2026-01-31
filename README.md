@@ -255,6 +255,5 @@ This project is part of academic coursework. Please respect academic integrity p
 
 ---
 
-**Last Updated:** February 2026  
 **Course:** Machine Learning  
 **Assignment:** Homework 2 - Binary Classification
