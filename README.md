@@ -299,21 +299,6 @@ This project demonstrates:
 - **Regularization:** Ridge/Lasso regression to handle multicollinearity
 - **External Validation:** Testing on independent datasets from different hospitals
 
-## 🤝 Contributing
-
-This is an academic project. For questions or suggestions, please contact the group members.
-
-## 📄 License
-
-This project is part of academic coursework. Please respect academic integrity policies when referencing this work.
-
-## 🙏 Acknowledgments
-
-- UCI Machine Learning Repository for providing the SUPPORT2 dataset
-- Course instructors and teaching assistants for guidance
-- scikit-learn and scipy communities for excellent documentation
-- Original SUPPORT study researchers
-
 ---
 
 **Course:** Machine Learning  
