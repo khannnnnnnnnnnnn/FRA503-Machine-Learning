@@ -238,7 +238,6 @@ The notebook includes comprehensive visualizations:
 ```
 ├── HW01_6611_6676.ipynb     # Main analysis notebook
 ├── README.md                # This file
-└── support2_raw.pkl         # Cached raw dataset (optional)
 ```
 
 ## 🛠️ Installation & Usage
