@@ -116,7 +116,6 @@ pip install pandas numpy matplotlib seaborn scikit-learn ucimlrepo
 ```
 ├── Homework1.ipynb          # Main analysis notebook
 ├── README.md                # This file
-└── requirements.txt         # Python dependencies (if created)
 ```
 
 ## 🎯 Model Performance
