@@ -1,10 +1,10 @@
-# Machine Learning HW1: SUPPORT2 Dataset Analysis
+# Machine Learning HW1: Linear Regression Analysis
 
-A comprehensive machine learning project analyzing the SUPPORT2 dataset using multiple regression models and ensemble techniques.
+A comprehensive linear regression project analyzing the SUPPORT2 dataset to predict hospital charges with extensive exploratory data analysis, feature selection, and model evaluation.
 
 ## 📋 Project Overview
 
-This project implements and compares various machine learning algorithms to predict patient charges from the SUPPORT2 dataset. The analysis includes data preprocessing, feature engineering, model training, hyperparameter tuning, and extensive performance evaluation.
+This project implements supervised regression analysis to predict **hospital charges** for seriously ill hospitalized patients. The analysis includes thorough exploratory data analysis, statistical feature selection, data preprocessing, transformation, and comprehensive model evaluation with two different model configurations.
 
 ## 👥 Group Members
 
@@ -15,128 +15,290 @@ This project implements and compares various machine learning algorithms to pred
 
 **Source:** [SUPPORT2 – UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/880/support2)
 
-The SUPPORT2 dataset contains medical data about seriously ill hospitalized patients. The target variable is `charges`, representing the total hospital charges.
+The SUPPORT2 dataset contains medical data from **9,105 seriously ill hospitalized patients** from five U.S. states, collected across two periods (1989-1991 and 1992-1994). The dataset includes 47 features covering patient demographics, medical conditions, laboratory values, and clinical outcomes.
+
+### Target Variable
+- **charges**: Total hospital charges for each patient (continuous variable)
+
+### Key Predictor Features
+- **Demographics:** age, sex, race, education, income
+- **Medical Conditions:** disease categories, comorbidities, cancer status
+- **Clinical Measurements:** blood pressure, heart rate, respiratory rate, temperature, lab values
+- **Hospital Stay:** length of stay (slos), study entry day (hday), follow-up days (d.time)
+- **Severity Scores:** APACHE scores (aps), SUPPORT scores (sps), TISS scores (avtisst)
+- **Functional Status:** ADL scores, disability indices
 
 ## 🔧 Technologies & Libraries
 
-- **Python 3.13**
+- **Python 3.12+**
 - **Data Processing:** pandas, numpy
+- **Statistical Analysis:** scipy
 - **Visualization:** matplotlib, seaborn
 - **Machine Learning:** scikit-learn
 - **Data Fetching:** ucimlrepo
 
-## 🚀 Features
+## 🚀 Features & Methodology
 
-### Data Preprocessing
-- Handling missing values
-- Outlier detection and treatment using IQR method
-- Feature scaling and normalization
-- Categorical variable encoding (one-hot encoding)
-- Train-test split (80-20)
+### 1. Data Loading & Description
+- Comprehensive data dictionary with 47 variables
+- Dataset structure analysis
+- Initial exploration
 
-### Models Implemented
+### 2. Problem Statement Definition
+- **Task Type:** Supervised Regression
+- **Algorithm:** Linear Regression
+- **Objective:** Predict hospital charges for all hospitalized patients
 
-1. **Linear Regression**
-2. **Ridge Regression**
-3. **Lasso Regression**
-4. **K-Nearest Neighbors (KNN)**
-5. **Decision Tree Regressor**
-6. **Random Forest Regressor**
-7. **Gradient Boosting Regressor**
-8. **Support Vector Regression (SVR)**
-9. **Ensemble Methods:**
-   - Voting Regressor
-   - Stacking Regressor
+### 3. Linear Regression Assumptions
+The project validates six key assumptions:
+1. **Linearity:** Linear relationship between predictors and target
+2. **Multicollinearity:** Predictors should not be highly correlated
+3. **Normality of Residuals:** Errors follow normal distribution (mean=0)
+4. **No Influential Outliers:** Outliers should not dominate the model
+5. **No Autocorrelation:** Residuals should be independent
+6. **Homoscedasticity:** Constant variance of residuals
 
-### Hyperparameter Tuning
+### 4. Target Distribution Analysis
+- Distribution visualization of hospital charges
+- Skewness assessment
+- Log transformation consideration
 
-All models undergo rigorous hyperparameter optimization using:
-- **GridSearchCV** with 5-fold cross-validation
-- Custom parameter grids for each algorithm
-- Performance-based model selection
+### 5. Basic Data Exploration
+- Statistical summaries for all features
+- Data type identification
+- Missing value assessment
+- Initial insights
 
-### Evaluation Metrics
+### 6. Visual Exploratory Data Analysis (EDA)
 
-- **R² Score** (Coefficient of Determination)
+#### 6.1. Categorical Variables
+- Bar chart visualization for all categorical features
+- Distribution interpretation
+- Pattern identification
+
+#### 6.2. Continuous Variables
+- **Histogram Analysis:** Distribution shapes, skewness patterns
+- **Box Plot Analysis:** Outlier detection, quartile ranges
+- Comprehensive interpretation of distributions
+
+#### 6.3. Data Leakage Detection
+- Identifying features that could cause leakage
+- Removing problematic features (e.g., totcst, totmcst derived from charges)
+
+### 7. Outlier Treatment
+- Outlier detection and analysis
+- Decision on outlier handling strategy
+
+### 8. Missing Value Treatment
+
+#### 8.1. Continuous Features
+- **Option 1:** Removing rows with missing values
+- **Option 2:** Filling with mean
+- **Option 3:** Filling with median (selected approach)
+- Post-treatment validation
+
+#### 8.2. Categorical Features
+- **Option 1:** Removing rows with missing values
+- **Option 2:** Filling with mode (selected approach)
+- Post-treatment visualization
+
+#### 8.3. Train-Test Split
+- 70% training, 30% testing
+- Distribution validation across splits
+
+### 9. Feature Selection by Visual Correlation & Statistical Analysis
+
+#### 9.1. Continuous vs Continuous Relationships
+- **Visual Exploration:** Scatter plots for all numeric features
+- **Statistical Methods:**
+  - Pearson correlation coefficient
+  - Mutual information
+  - Correlation heatmap analysis
+
+**Selected Features (Strong/Moderate Correlation):**
+- Strong: d.time, avtisst, aps
+- Weak: age, slos, edu, hday, dnrday, wblc, resp, pafi, bili, crea, glucose, bun, adlsc
+
+#### 9.2. Continuous vs Categorical Relationships
+- **Visual Exploration:** Box plots grouped by categories
+- **Statistical Methods:**
+  - ANOVA (Analysis of Variance)
+  - Effect size analysis
+  - Point-biserial correlation
+
+**Selected Categorical Features:**
+- dzgroup, race, ca
+
+### 10. Final Feature Selection Summary
+Selected features based on combined statistical and visual analysis.
+
+### 11. Data Preprocessing for Machine Learning
+
+#### 11.1. Feature Encoding
+- **Ordinal Encoding:** For ordered categorical variables
+- **Binary Encoding:** 1/0 mapping for binary variables
+- **One-Hot Encoding:** Dummy variables for nominal categories
+
+#### 11.2. Data Transformation
+- **Log Transformation:** Applied to highly skewed features including target variable (charges)
+- **Standardization:** StandardScaler for numeric features
+- Transformation validation
+
+### 12. Model Construction
+
+#### Model 1: Without Outlier Treatment
+- Linear regression with standardization only
+- Applied log transformation on target
+- Considers non-linear relationships
+
+#### Model 2: With Outlier Treatment
+- Outlier removal on doubtful predictors
+- Complete preprocessing pipeline
+- Improved data quality
+
+### 13. Model Evaluation & Performance Metrics
+
+#### Training Metrics
+- **R² Score:** Coefficient of determination
 - **Mean Absolute Error (MAE)**
 - **Mean Squared Error (MSE)**
 - **Root Mean Squared Error (RMSE)**
-- Residual analysis with visualization
+- **Mean Absolute Percentage Error (MAPE)**
 
-## 📈 Analysis Pipeline
+#### Testing Metrics
+- Same metrics applied to test set
+- Generalization assessment
 
-1. **Data Loading & Exploration**
-   - Dataset structure analysis
-   - Statistical summaries
-   - Missing value assessment
+#### Visualization
+- **Actual vs Predicted Scatter Plots**
+- **Residual Plots:** Residual vs Actual values
+- Error distribution analysis
 
-2. **Data Cleaning**
-   - Outlier detection using IQR (Interquartile Range)
-   - Missing value imputation
-   - Data type conversions
+### 14. Comprehensive Model Analysis
 
-3. **Feature Engineering**
-   - One-hot encoding for categorical variables
-   - Feature scaling using StandardScaler
-   - Feature selection
+The project answers seven critical questions:
 
-4. **Model Training**
-   - Individual model training
-   - Hyperparameter optimization
-   - Ensemble model construction
+#### 1. Overfitting Assessment
+- Comparing training vs testing R² scores
+- Cost function analysis for both models
+- Identifying overfitting indicators
 
-5. **Model Evaluation**
-   - Performance comparison across all models
-   - Residual plot analysis
-   - Prediction vs actual value visualization
+#### 2. Model Accuracy Comparison
+- Which model performs better?
+- Why does one model outperform the other?
+- Statistical evidence for model selection
 
-## 📊 Key Results
+#### 3. Real-World Applicability
+- Can the model be deployed in production?
+- What are the practical limitations?
+- Reliability assessment
+
+#### 4. Feature Importance
+- Which features contribute most?
+- Coefficient analysis
+- Feature sufficiency evaluation
+
+#### 5. Settings Impact Analysis
+- How do different preprocessing steps affect performance?
+- Comparison of Model 1 vs Model 2
+- Impact of outlier treatment
+
+#### 6. Error Analysis & Limitations
+- What data characteristics reduce model effectiveness?
+- Residual pattern analysis
+- Non-linear cost escalation challenges
+- Model limitations with extreme high-cost cases
+
+#### 7. Model Improvement Strategies
+- Recommendations for enhancement
+- Potential advanced techniques
+- Future research directions
+
+## 📈 Key Visualizations
 
 The notebook includes comprehensive visualizations:
-- Residual plots for training and testing data
-- Actual vs Predicted scatter plots
-- Model performance comparison tables
-- Feature importance analysis (for tree-based models)
+- Distribution plots (histograms and box plots) for all variables
+- Scatter plots showing feature-target relationships
+- Correlation heatmaps
+- Grouped bar charts for categorical analysis
+- Actual vs Predicted plots for both models
+- Residual analysis plots
+- Feature coefficient comparisons
+
+## 🎯 Model Performance Highlights
+
+- **Two Complete Models:** With and without outlier treatment
+- **Comprehensive Metrics:** R², MAE, MSE, RMSE, MAPE
+- **Visual Validation:** Multiple plot types for thorough analysis
+- **Statistical Rigor:** Hypothesis testing and correlation analysis
+- **Practical Insights:** Real-world applicability assessment
+
+## 📁 Project Structure
+
+```
+├── HW01_6611_6676.ipynb     # Main analysis notebook
+├── README.md                # This file
+└── support2_raw.pkl         # Cached raw dataset (optional)
+```
 
 ## 🛠️ Installation & Usage
 
 ### Prerequisites
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn ucimlrepo
+pip install numpy pandas matplotlib seaborn scipy scikit-learn ucimlrepo
 ```
 
 ### Running the Notebook
 1. Clone or download the repository
-2. Open `Homework1.ipynb` in Jupyter Notebook or Google Colab
+2. Open `HW01_6611_6676.ipynb` in Jupyter Notebook or Google Colab
 3. Run all cells sequentially
-4. Review the output, visualizations, and model performance metrics
-
-## 📁 Project Structure
-
-```
-├── Homework1.ipynb          # Main analysis notebook
-├── README.md                # This file
-```
-
-## 🎯 Model Performance
-
-Each model is evaluated on both training and testing datasets with the following metrics:
-- **Training Performance:** Assesses model fit
-- **Testing Performance:** Evaluates generalization capability
-- **Residual Analysis:** Identifies prediction patterns and biases
+4. Review the comprehensive analysis, visualizations, and model evaluations
 
 ## 🔍 Key Insights
 
-- Comprehensive comparison of linear, tree-based, and ensemble methods
-- Ensemble methods (Voting and Stacking) often provide robust predictions
-- Hyperparameter tuning significantly impacts model performance
-- Residual analysis helps identify model limitations and areas for improvement
+- **Feature Selection Matters:** Statistical correlation analysis effectively identifies relevant predictors
+- **Data Quality Impact:** Proper handling of missing values and outliers significantly affects performance
+- **Transformation Benefits:** Log transformation helps address skewness in charges distribution
+- **Linear Regression Limitations:** Model struggles with non-linear cost escalation, especially for extreme high-cost patients
+- **Model Comparison:** Outlier treatment improves accuracy but doesn't fully resolve non-linearity issues
+- **Practical Considerations:** Both models show limitations for real-world deployment due to residual patterns
+
+## 📊 Statistical Methods Used
+
+- **Pearson Correlation:** Linear relationship measurement
+- **Mutual Information:** Non-linear relationship detection
+- **ANOVA:** Group mean comparisons for categorical variables
+- **Point-biserial Correlation:** Binary-continuous relationships
+- **IQR Method:** Outlier detection
+- **Skewness Analysis:** Distribution assessment
+
+## 🎓 Learning Outcomes
+
+This project demonstrates:
+- Complete linear regression pipeline from raw data to model evaluation
+- Rigorous statistical feature selection methodology
+- Proper validation of regression assumptions
+- Data quality management (missing values, outliers, transformations)
+- Comprehensive model evaluation and comparison
+- Critical analysis of model limitations
+- Real-world applicability assessment for healthcare cost prediction
 
 ## 📝 Notes
 
-- The notebook includes Thai language comments for accessibility
-- All visualizations are optimized for clear interpretation
-- The code follows best practices for reproducibility
+- The notebook includes detailed interpretations and summaries throughout
+- All visualizations are optimized for clarity and insight
+- Code follows best practices for reproducibility
+- Statistical tests are properly documented with business interpretations
+
+## ⚠️ Limitations & Future Work
+
+- **Non-linearity:** Linear regression struggles with extreme cost escalation
+- **Model Complexity:** Could explore polynomial features or non-linear models
+- **Advanced Techniques:** Tree-based models or ensemble methods might capture non-linear patterns better
+- **Feature Engineering:** Interaction terms and domain-specific features could improve predictions
+- **Cross-Validation:** k-fold CV for more robust performance estimates
+- **Regularization:** Ridge/Lasso regression to handle multicollinearity
+- **External Validation:** Testing on independent datasets from different hospitals
 
 ## 🤝 Contributing
 
@@ -150,8 +312,10 @@ This project is part of academic coursework. Please respect academic integrity p
 
 - UCI Machine Learning Repository for providing the SUPPORT2 dataset
 - Course instructors and teaching assistants for guidance
-- scikit-learn community for excellent documentation
+- scikit-learn and scipy communities for excellent documentation
+- Original SUPPORT study researchers
 
 ---
 
-**Last Updated:** February 2026
+**Course:** Machine Learning  
+**Assignment:** Homework 1 - Linear Regression Analysis
