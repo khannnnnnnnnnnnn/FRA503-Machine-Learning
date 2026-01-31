@@ -2,12 +2,6 @@
 
 A collection of three comprehensive machine learning projects analyzing the SUPPORT2 and Bank Marketing datasets, covering regression and classification techniques with systematic experimental approaches.
 
-## 👥 Team Members
-
-- **Chantouch Orungrote** (ID: 66340500011)
-- **Sasish Kaewsing** (ID: 66340500076)
-- **Penpitcha Chobchon** (ID: 66340500035) - Project only
-
 ## 📚 Projects Overview
 
 ### 1️⃣ Homework 1: Linear Regression Analysis
