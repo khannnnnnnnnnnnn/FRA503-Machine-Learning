@@ -328,7 +328,6 @@ The notebook includes extensive visualizations:
 ```
 ├── Project_ML_6611_6635_6676.ipynb    # Main analysis notebook
 ├── README.md                          # This file
-└── bank_marketing.pkl                 # Cached dataset (generated)
 ```
 
 ## 🛠️ Installation & Usage
@@ -392,20 +391,6 @@ This project demonstrates:
 5. Implement cost-sensitive learning frameworks
 6. Deploy A/B testing framework for production validation
 
-## 🤝 Contributing
-
-This is an academic project. For questions or suggestions, please contact the group members.
-
-## 📄 License
-
-This project is part of academic coursework. Please respect academic integrity policies when referencing this work.
-
-## 🙏 Acknowledgments
-
-- UCI Machine Learning Repository for the Bank Marketing dataset
-- Course instructors and teaching assistants for guidance
-- scikit-learn community for comprehensive ML tools
-- Original study: Moro et al., 2014 - A Data-Driven Approach to Predict the Success of Bank Telemarketing
 
 ---
 
