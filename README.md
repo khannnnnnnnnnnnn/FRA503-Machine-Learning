@@ -89,9 +89,6 @@ jupyter notebook Project_ML_6611_6635_6676.ipynb
 ├── HW02_6611_6676.ipynb              # Homework 2: Logistic Regression
 ├── Project_ML_6611_6635_6676.ipynb   # Final Project: Multi-Model Comparison
 ├── README.md                         # Main README (overview)
-├── README_HW1.md                     # Detailed HW1 documentation
-├── README_HW2.md                     # Detailed HW2 documentation
-└── README_Project.md                 # Detailed Project documentation
 ```
 
 ## 🎯 Key Learning Outcomes
