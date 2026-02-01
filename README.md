@@ -2,9 +2,9 @@
 
 A collection of three comprehensive machine learning projects analyzing the SUPPORT2 and Bank Marketing datasets, covering regression and classification techniques with systematic experimental approaches.
 
-## 📚 Projects Overview
+## Projects Overview
 
-### 1️⃣ Homework 1: Linear Regression Analysis
+### Homework 1: Linear Regression Analysis
 **File:** `HW01_6611_6676.ipynb`
 
 Predicting **hospital charges** using linear regression on the SUPPORT2 dataset.
@@ -20,7 +20,7 @@ Predicting **hospital charges** using linear regression on the SUPPORT2 dataset.
 
 ---
 
-### 2️⃣ Homework 2: Logistic Regression Classification
+### Homework 2: Logistic Regression Classification
 **File:** `HW02_6611_6676.ipynb`
 
 Predicting **in-hospital mortality** using logistic regression on the SUPPORT2 dataset.
@@ -36,7 +36,7 @@ Predicting **in-hospital mortality** using logistic regression on the SUPPORT2 d
 
 ---
 
-### 3️⃣ Final Project: Multi-Model Classification Comparison
+### Final Project: Multi-Model Classification Comparison
 **File:** `Project_ML_6611_6635_6676.ipynb`
 
 Predicting **term deposit subscription** with systematic comparison of four classifiers on the Bank Marketing dataset.
@@ -52,7 +52,7 @@ Predicting **term deposit subscription** with systematic comparison of four clas
 
 ---
 
-## 🔧 Technologies
+## Technologies
 
 - **Python:** 3.12+
 - **Core Libraries:** pandas, numpy, scipy
@@ -60,7 +60,7 @@ Predicting **term deposit subscription** with systematic comparison of four clas
 - **Machine Learning:** scikit-learn
 - **Data Source:** ucimlrepo
 
-## 📊 Datasets
+## Datasets
 
 ### SUPPORT2 (HW1 & HW2)
 Medical data from seriously ill hospitalized patients across five U.S. states (1989-1994). Contains demographics, clinical measurements, lab values, and outcomes.
@@ -68,7 +68,7 @@ Medical data from seriously ill hospitalized patients across five U.S. states (1
 ### Bank Marketing (Project)
 Direct marketing campaign data from a Portuguese bank. Contains client demographics, financial information, and campaign contact details.
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Install dependencies
@@ -82,7 +82,7 @@ jupyter notebook HW02_6611_6676.ipynb
 jupyter notebook Project_ML_6611_6635_6676.ipynb
 ```
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ├── HW01_6611_6676.ipynb              # Homework 1: Linear Regression
@@ -91,7 +91,7 @@ jupyter notebook Project_ML_6611_6635_6676.ipynb
 ├── README.md                         # Main README (overview)
 ```
 
-## 🎯 Key Learning Outcomes
+## Key Learning Outcomes
 
 ### Regression (HW1)
 - Linear regression assumptions and validation
@@ -111,7 +111,7 @@ jupyter notebook Project_ML_6611_6635_6676.ipynb
 - Impact of preprocessing on different algorithms
 - Business-oriented metric selection
 
-## 📈 Methodology Highlights
+## Methodology Highlights
 
 All projects follow rigorous data science workflows:
 1. **EDA:** Comprehensive exploratory analysis with visualizations
@@ -120,7 +120,7 @@ All projects follow rigorous data science workflows:
 4. **Model Evaluation:** Multiple metrics with cross-validation
 5. **Critical Analysis:** Overfitting, limitations, real-world applicability
 
-## 📝 Notes
+## Notes
 
 - Each project has detailed documentation in its respective README file
 - All notebooks include Thai language comments for accessibility
